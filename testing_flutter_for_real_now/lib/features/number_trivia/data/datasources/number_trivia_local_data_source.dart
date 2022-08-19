@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +17,7 @@ abstract class NumberTriviaLocalDataSource {
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache);
 }
 
+// ignore: constant_identifier_names
 const CACHED_NUMBER_TRIVIA = 'CACHED_NUMBER_TRIVIA';
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
