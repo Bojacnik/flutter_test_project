@@ -1,0 +1,84 @@
+{
+	"_test": {
+		"prefix": "_test",
+		"body": [
+			"test('$1', () async {",
+			"\t// arrange",
+			"\t$2",
+			"\t// act",
+			"\t$3",
+			"\t// assert",
+			"\t$4",
+			"});"
+		],
+		"description": "Insert test snippet with arrange, act, assert placeholders"
+	},
+	"_testWidgets": {
+		"prefix": "_testWidgets",
+		"body": [
+			"testWidgets('$1', (WidgetTester tester) async {",
+			"\t// arrange",
+			"\t$2",
+			"\t// act",
+			"\t$3",
+			"\t// assert",
+			"\t$4",
+			"});"
+		],
+		"description": "Insert test snippet with arrange, act, assert placeholders"
+	},
+	"_bloc_test": {
+		"prefix": "_blocTest",
+		"body": [
+			"group('$1', () {",
+			"\tsetUp(() {",
+			"\t\t$2",
+			"\t});",
+			"",
+			"\tblocTest(",
+			"\t\t'$3',",
+			"\t\tbuild: () => bloc,",
+			"\t\texpect: () => [",
+			"\t\t\t$4",
+			"\t\t],",
+			"\t\tact: (cubit) => cubit..add($5),",
+			"\t);",
+			"});"
+		]
+	},
+	"_template": {
+		"prefix": "_template",
+		"body": ["/// {@template $1}", "/// {@endtemplate}"]
+	},
+	"_macro": {
+		"prefix": "_macro",
+		"body": ["\t/// {@macro $1}"]
+	},
+	"_group": {
+		"prefix": "_group",
+		"body": ["group('$1', () {", "\t$2", "});"],
+		"description": "Insert test group snippet"
+	},
+	"_chainState": {
+		"prefix": "_chainState",
+		"body": [
+			"abstract class $1DetailChainState<T> {",
+			"  int get $2ID;",
+			"",
+			"  T copyWith$1Detail($1DetailState state);",
+			"}",
+			"",
+			"extension $1DetailStateChainExtension<T extends $1DetailChainState>",
+			"    on Stream<T> {",
+			"  Stream<T>",
+			"      combineWith$1DetailState() {",
+			"    return this.switchMap((state) {",
+			"      final $2ID = state.$2ID;",
+			"",
+			"    });",
+			"  }",
+			"}"
+		],
+		"description": "Generate chain state with extension on stream"
+	}
+}
