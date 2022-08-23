@@ -4,8 +4,10 @@ import 'features/number_trivia/presentation/pages/number_trivia_page.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await di.init();
-  //runApp(MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemeData(
           primaryColor: Colors.green.shade800,
-          // ignore: deprecated_member_use
           accentColor: Colors.green.shade600),
       home: NumberTriviaPage(),
     );
