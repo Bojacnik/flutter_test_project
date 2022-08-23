@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
@@ -20,20 +21,31 @@ abstract class NumberTriviaRemoteDataSource {
 
 class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
   final http.Client client;
+  static const String url = "numbersapi.com";
 
   NumberTriviaRemoteDataSourceImpl({@required this.client});
 
   @override
   Future<NumberTriviaModel> getConcreteNumberTrivia(int number) {
-    return _getTriviaFromUrl('http://numbersapi.com/$number');
+    final uri = Uri(
+      scheme: "http",
+      host: url,
+      path: "$number",
+    );
+    return _getTriviaFromUrl(uri);
   }
 
   @override
   Future<NumberTriviaModel> getRandomNumberTrivia() {
-    return _getTriviaFromUrl('http://numbersapi.com/random');
+    final uri = Uri(
+      scheme: "http",
+      host: url,
+      path: "random",
+    );
+    return _getTriviaFromUrl(uri);
   }
 
-  Future<NumberTriviaModel> _getTriviaFromUrl(String url) async {
+  Future<NumberTriviaModel> _getTriviaFromUrl(Uri url) async {
     final response = await client.get(
       url,
       headers: {

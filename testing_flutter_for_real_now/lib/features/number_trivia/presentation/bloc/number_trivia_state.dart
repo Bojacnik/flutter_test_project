@@ -5,21 +5,37 @@ import '../../domain/entities/number_trivia.dart';
 
 @immutable
 abstract class NumberTriviaState extends Equatable {
-  NumberTriviaState([List props = const <dynamic>[]]) : super(props);
+  const NumberTriviaState() : super();
 }
 
-class Empty extends NumberTriviaState {}
+class Empty extends NumberTriviaState {
+  const Empty() : super();
 
-class Loading extends NumberTriviaState {}
+  @override
+  List<Object> get props => [];
+}
+
+class Loading extends NumberTriviaState {
+  const Loading() : super();
+
+  @override
+  List<Object> get props => [];
+}
 
 class Loaded extends NumberTriviaState {
   final NumberTrivia trivia;
 
-  Loaded({@required this.trivia}) : super([trivia]);
+  const Loaded({@required this.trivia}) : super();
+
+  @override
+  List<Object> get props => [trivia];
 }
 
 class Error extends NumberTriviaState {
   final String message;
 
-  Error({@required this.message}) : super([message]);
+  const Error({@required this.message}) : super();
+
+  @override
+  List<Object> get props => [message];
 }

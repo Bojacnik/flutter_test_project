@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:testing_flutter_for_real_now/core/error/failures.dart';
+
+import '../error/failures.dart';
 
 class InputConverter {
   Either<Failure, int> stringToUnsignedInteger(String str) {
@@ -13,4 +14,7 @@ class InputConverter {
   }
 }
 
-class InvalidInputFailure extends Failure {}
+class InvalidInputFailure extends Failure {
+  @override
+  List<Object> get props => const [];
+}

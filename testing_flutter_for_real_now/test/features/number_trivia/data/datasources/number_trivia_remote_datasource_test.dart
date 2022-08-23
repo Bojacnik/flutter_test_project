@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:testing_flutter_for_real_now/core/error/exceptions.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/data/datasources/number_trivia_remote_datasource.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/data/models/number_trivia_model.dart';
-import 'package:matcher/matcher.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/fixtures/fixture_reader.dart';
@@ -44,9 +43,11 @@ void main() {
       // act
       dataSource.getConcreteNumberTrivia(tNumber);
       // assert
-      verify(mockHttpClient.get('http://numbersapi.com/$tNumber', headers: {
-        'Content-Type': 'application/json',
-      }));
+      verify(mockHttpClient.get(
+          Uri(scheme: "http", host: "numbersapi.com", path: "$tNumber"),
+          headers: {
+            'Content-Type': 'application/json',
+          }));
     });
 
     test('should return NumberTrivia when the response code is 200 (success)',
@@ -67,7 +68,8 @@ void main() {
       // act
       final call = dataSource.getConcreteNumberTrivia;
       // assert
-      expect(() => call(tNumber), throwsA(TypeMatcher<ServerException>()));
+      expect(
+          () => call(tNumber), throwsA(const TypeMatcher<ServerException>()));
     });
   });
   group('getRandomNumberTrivia', () {
@@ -82,9 +84,12 @@ void main() {
       // act
       dataSource.getRandomNumberTrivia();
       // assert
-      verify(mockHttpClient.get('http://numbersapi.com/random', headers: {
-        'Content-Type': 'application/json',
-      }));
+      verify(mockHttpClient.get(
+        Uri(scheme: "http", host: 'numbersapi.com', path: "random"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      ));
     });
 
     test('should return NumberTrivia when the response code is 200 (success)',
@@ -105,7 +110,7 @@ void main() {
       // act
       final call = dataSource.getRandomNumberTrivia;
       // assert
-      expect(() => call(), throwsA(TypeMatcher<ServerException>()));
+      expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
     });
   });
 }

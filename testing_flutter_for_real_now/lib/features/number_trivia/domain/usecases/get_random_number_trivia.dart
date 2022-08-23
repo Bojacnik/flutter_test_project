@@ -1,10 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:testing_flutter_for_real_now/core/error/failures.dart';
-import 'package:testing_flutter_for_real_now/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:testing_flutter_for_real_now/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
+import '../entities/number_trivia.dart';
 import '../repositories/number_trivia_repository.dart';
 
 class GetRandomNumberTrivia implements UseCase<NumberTrivia, NoParams> {
