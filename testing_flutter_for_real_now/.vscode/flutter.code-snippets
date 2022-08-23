@@ -30,6 +30,19 @@
 	"_bloc_test": {
 		"prefix": "_blocTest",
 		"body": [
+			"\tblocTest(",
+			"\t\t'$3',",
+			"\t\tbuild: () => bloc,",
+			"\t\texpect: () => [",
+			"\t\t\t$4",
+			"\t\t],",
+			"\t\tact: (cubit) => cubit..add($5),",
+			"\t);",
+		]
+	},
+	"_bloc_test_group": {
+		"prefix": "_blocTest",
+		"body": [
 			"group('$1', () {",
 			"\tsetUp(() {",
 			"\t\t$2",
