@@ -32,34 +32,32 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         getRandomNumberTrivia = random,
         initialState = state,
         super(state) {
-    Future<void> _onGetTriviaForConcreteNumberHandler(
-        GetTriviaForConcreteNumber event,
-        Emitter<NumberTriviaState> emit) async {
-      final inputEither =
-          inputConverter.stringToUnsignedInteger(event.numberString);
-
-      inputEither.fold(
-        (failure) async {
-          emit(const Error(message: INVALID_INPUT_FAILURE_MESSAGE));
-        },
-        (integer) async {
-          emit(const Loading());
-          final failureOrTrivia =
-              await getConcreteNumberTrivia(Params(number: integer));
-          emit(_eitherLoadedOrErrorState(failureOrTrivia));
-        },
-      );
-    }
-
-    Future<void> _onGetTriviaForRandomNumberHandler(
-        GetTriviaForRandomNumber event, Emitter<NumberTriviaState> emit) async {
-      emit(const Loading());
-      final failureOrTrivia = await getRandomNumberTrivia(NoParams());
-      emit(_eitherLoadedOrErrorState(failureOrTrivia));
-    }
-
     on<GetTriviaForConcreteNumber>(_onGetTriviaForConcreteNumberHandler);
     on<GetTriviaForRandomNumber>(_onGetTriviaForRandomNumberHandler);
+  }
+  Future<void> _onGetTriviaForConcreteNumberHandler(
+      GetTriviaForConcreteNumber event, Emitter<NumberTriviaState> emit) async {
+    final inputEither =
+        inputConverter.stringToUnsignedInteger(event.numberString);
+
+    inputEither.fold(
+      (failure) async {
+        emit(const Error(message: INVALID_INPUT_FAILURE_MESSAGE));
+      },
+      (integer) async {
+        emit(const Loading());
+        final failureOrTrivia =
+            await getConcreteNumberTrivia(Params(number: integer));
+        emit(_eitherLoadedOrErrorState(failureOrTrivia));
+      },
+    );
+  }
+
+  Future<void> _onGetTriviaForRandomNumberHandler(
+      GetTriviaForRandomNumber event, Emitter<NumberTriviaState> emit) async {
+    emit(const Loading());
+    final failureOrTrivia = await getRandomNumberTrivia(NoParams());
+    emit(_eitherLoadedOrErrorState(failureOrTrivia));
   }
 
   NumberTriviaState _eitherLoadedOrErrorState(
