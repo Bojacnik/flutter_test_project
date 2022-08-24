@@ -83,7 +83,7 @@ void main() {
       act: (tBloc) =>
           tBloc.add(const GetTriviaForConcreteNumber(tNumberString)),
       expect: () => [
-        const Error(message: INVALID_INPUT_FAILURE_MESSAGE),
+        const Error(message: invalidInputFailureMessage),
       ],
       verify: (bloc) {
         verify(mockInputConverter.stringToUnsignedInteger(tNumberString))
@@ -142,7 +142,7 @@ void main() {
           tBloc.add(const GetTriviaForConcreteNumber(tNumberString)),
       expect: () => [
         const Loading(),
-        const Error(message: SERVER_FAILURE_MESSAGE),
+        const Error(message: serverFailureMessage),
       ],
       verify: (bloc) {
         verify(mockInputConverter.stringToUnsignedInteger(tNumberString))
@@ -165,7 +165,7 @@ void main() {
           tBloc.add(const GetTriviaForConcreteNumber(tNumberString)),
       expect: () => [
         const Loading(),
-        const Error(message: CACHE_FAILURE_MESSAGE),
+        const Error(message: cacheFailureMessage),
       ],
       verify: (bloc) {
         verify(mockInputConverter.stringToUnsignedInteger(tNumberString))
@@ -221,7 +221,7 @@ void main() {
         expect: () => [
           const Loading(),
           const Error(
-            message: SERVER_FAILURE_MESSAGE,
+            message: serverFailureMessage,
           )
         ],
         verify: (bloc) {
@@ -239,7 +239,7 @@ void main() {
           act: (tBloc) => tBloc.add(GetTriviaForRandomNumber()),
           expect: () => [
                 const Loading(),
-                const Error(message: CACHE_FAILURE_MESSAGE),
+                const Error(message: cacheFailureMessage),
               ],
           verify: (bloc) {
             verify(mockGetRandomNumberTrivia(any));

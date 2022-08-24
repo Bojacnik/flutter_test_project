@@ -29,6 +29,9 @@ dependencies:
   shared_preferences: ^2.0.15
 
   cupertino_icons: ^1.0.5
+  meta: ^1.7.0
+  bloc: ^8.1.0
+  matcher: ^0.12.11
 dev_dependencies:
   flutter_test:
     sdk: flutter

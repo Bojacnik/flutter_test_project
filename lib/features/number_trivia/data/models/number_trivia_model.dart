@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import '../../domain/entities/number_trivia.dart';
 
 class NumberTriviaModel extends NumberTrivia {
-  NumberTriviaModel({
+  const NumberTriviaModel({
     @required String text,
     @required int number,
   }) : super(text: text, number: number);

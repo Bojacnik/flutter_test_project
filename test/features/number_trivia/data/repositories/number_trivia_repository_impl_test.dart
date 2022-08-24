@@ -34,10 +34,10 @@ void main() {
   });
 
   group('getConcreteNumberTrivia', () {
-    final tNumber = 1;
-    final tNumberTriviaModel =
+    const tNumber = 1;
+    const tNumberTriviaModel =
         NumberTriviaModel(number: tNumber, text: 'test trivia');
-    final tNumberTrivia = tNumberTriviaModel;
+    const tNumberTrivia = tNumberTriviaModel;
 
     test('should check if the device is online', () async {
       // arrange
@@ -63,7 +63,7 @@ void main() {
         final result = await repository.getConcreteNumberTrivia(tNumber);
         // assert
         verify(mockRemoteDataSource.getConcreteNumberTrivia(tNumber));
-        expect(result, equals(Right(tNumberTrivia)));
+        expect(result, equals(const Right(tNumberTrivia)));
       });
 
       test(
@@ -110,7 +110,7 @@ void main() {
           // assert
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
-          expect(result, equals(Right(tNumberTrivia)));
+          expect(result, equals(const Right(tNumberTrivia)));
         },
       );
 
@@ -132,9 +132,9 @@ void main() {
   });
 
   group('getRandomNumberTrivia', () {
-    final tNumberTriviaModel =
+    const tNumberTriviaModel =
         NumberTriviaModel(number: 123, text: 'test trivia');
-    final tNumberTrivia = tNumberTriviaModel;
+    const tNumberTrivia = tNumberTriviaModel;
 
     test('should check if the device is online', () async {
       // arrange
@@ -160,7 +160,7 @@ void main() {
         final result = await repository.getRandomNumberTrivia();
         // assert
         verify(mockRemoteDataSource.getRandomNumberTrivia());
-        expect(result, equals(Right(tNumberTrivia)));
+        expect(result, equals(const Right(tNumberTrivia)));
       });
 
       test(
@@ -207,7 +207,7 @@ void main() {
           // assert
           verifyZeroInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
-          expect(result, equals(Right(tNumberTrivia)));
+          expect(result, equals(const Right(tNumberTrivia)));
         },
       );
 

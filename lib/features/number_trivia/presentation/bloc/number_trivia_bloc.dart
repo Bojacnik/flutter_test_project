@@ -12,9 +12,9 @@ import '../../domain/usecases/get_concrete_number_trivia.dart';
 import '../../domain/usecases/get_random_number_trivia.dart';
 import './bloc.dart';
 
-const String SERVER_FAILURE_MESSAGE = 'Server Failure';
-const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
-const String INVALID_INPUT_FAILURE_MESSAGE =
+const String serverFailureMessage = 'Server Failure';
+const String cacheFailureMessage = 'Cache Failure';
+const String invalidInputFailureMessage =
     'Invalid Input - The number must be a positive integer or zero.';
 
 class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
@@ -42,7 +42,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
 
     await inputEither.fold(
       (failure) async {
-        emit(const Error(message: INVALID_INPUT_FAILURE_MESSAGE));
+        emit(const Error(message: invalidInputFailureMessage));
       },
       (integer) async {
         emit(const Loading());
@@ -72,9 +72,9 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   String _mapFailureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
+        return serverFailureMessage;
       case CacheFailure:
-        return CACHE_FAILURE_MESSAGE;
+        return cacheFailureMessage;
       default:
         return 'Unexpected error';
     }

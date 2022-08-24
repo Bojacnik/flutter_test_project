@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testing_flutter_for_real_now/core/error/exceptions.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/data/models/number_trivia_model.dart';
-import 'package:matcher/matcher.dart';
 
 import '../../../../core/fixtures/fixture_reader.dart';
 
@@ -48,12 +47,12 @@ void main() {
         // act
         final call = dataSource.getLastNumberTrivia;
         // assert
-        expect(() => call(), throwsA(TypeMatcher<CacheException>()));
+        expect(() => call(), throwsA(const TypeMatcher<CacheException>()));
       },
     );
 
     group('cacheNumberTrivia', () {
-      final tNumberTriviaModel =
+      const tNumberTriviaModel =
           NumberTriviaModel(number: 1, text: 'test trivia');
 
       test('should call SharedPreferences to cache', () async {

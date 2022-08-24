@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:testing_flutter_for_real_now/core/usecases/usecase.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:testing_flutter_for_real_now/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'package:testing_flutter_for_real_now/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,19 +18,19 @@ void main() {
     usecase = GetRandomNumberTrivia(mockNumberTriviaRepository);
   });
 
-  final tNumberTrivia = NumberTrivia(number: 1, text: 'test');
+  const tNumberTrivia = NumberTrivia(number: 1, text: 'test');
 
   test(
     'should get trivia from the repository',
     () async {
       // arrange
       when(mockNumberTriviaRepository.getRandomNumberTrivia())
-          .thenAnswer((_) async => Right(tNumberTrivia));
+          .thenAnswer((_) async => const Right(tNumberTrivia));
 
       // act
       final result = await usecase(NoParams());
       //assert
-      expect(result, Right(tNumberTrivia));
+      expect(result, const Right(tNumberTrivia));
       verify(mockNumberTriviaRepository.getRandomNumberTrivia());
       verifyNoMoreInteractions(mockNumberTriviaRepository);
     },
