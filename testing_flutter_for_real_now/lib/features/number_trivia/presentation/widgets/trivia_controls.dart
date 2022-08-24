@@ -37,9 +37,8 @@ class _TriviaControlsState extends State<TriviaControls> {
         Row(
           children: <Widget>[
             Expanded(
-              child: RaisedButton(
-                color: Theme.of(context).accentColor,
-                textTheme: ButtonTextTheme.primary,
+              child: ElevatedButton(
+                //style: ElevatedButton.styleFrom(),
                 onPressed: () {
                   addConcrete();
                 },
@@ -48,7 +47,8 @@ class _TriviaControlsState extends State<TriviaControls> {
             ),
             const SizedBox(width: 10),
             Expanded(
-              child: RaisedButton(
+              child: ElevatedButton(
+                //style: ElevatedButton.styleFrom(primary: Colors.gre),
                 child: const Text("Get random trivia"),
                 onPressed: () {
                   addRandom();
