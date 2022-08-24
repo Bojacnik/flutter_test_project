@@ -4,3 +4,9 @@ class ServerException implements Exception {
 }
 
 class CacheException implements Exception {}
+
+class UnknownStateException implements Exception {
+  final String message;
+
+  UnknownStateException(this.message);
+}
