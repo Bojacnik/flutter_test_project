@@ -1,4 +1,4 @@
-# testing_flutter_for_real_now
+# flutter_test_project
 
 A new Flutter project.
 
